@@ -57,7 +57,7 @@ VALUES
 
 INSERT INTO Fornecedora_Animais (id_industria, nome_fornecedor, endereco_fornecedor, proprietario_fornecedor)
 VALUES 
-(1, 'Fornecedora de Camundongos Ltda', 'Rua Anita Garibaldi, 202 - São Paulo', 'Liza Kruger'),
+(1, 'Fornecedor de Camundongos Ltda', 'Rua Anita Garibaldi, 202 - São Paulo', 'Liza Kruger'),
 (2, 'Fornecedor de Coelhos Ltda.', 'Rua Maria Quitéria, 340 - São Paulo de Janeiro', 'Ana Júlia Lima');
 
 
