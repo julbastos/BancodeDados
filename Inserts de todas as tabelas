@@ -1,0 +1,101 @@
+-- Insert Industriais
+
+INSERT INTO Industria_Farmaceutica (id_industria, nome_empresa, ano_fundacao, faturamento_anual)
+VALUES 
+(1,'ABCTech', 2024, 19000000.00),
+(2,'Indústria Lima', 2010, 10000000.00);
+
+-- Insert Licenças
+
+INSERT INTO Licencas_Certificados (id_industria, descricao)
+VALUES 
+(1, 'Licença de Produção de Medicamentos'),
+(1, 'Certificado de Boas Práticas de Fabricação'),
+(2, 'Licença Ambiental'),
+(2, 'Certificado de Qualidade ISO 9001');
+
+-- Insert  Unidades
+
+INSERT INTO Unidade (id_industria, cnpj_unidade, endereco, tipo_local)
+VALUES 
+(1, '56745678345102', 'Rua Dom Pedro I, 130 - São Paulo', 'Sede'),
+(1, '98245678932250', 'Rua Dom Pedro II, 47 - Campinas', 'Filial'),
+(2, '56165432016719', 'Rua Joaquim Nabuco, 30 - São Carlos', 'Sede');
+
+-- Insert Distribuidora 
+
+INSERT INTO Distribuidora (nome_empresa, contato_telefone, contato_email, tempo_medio_entrega, capacidade_armazenamento)
+VALUES 
+('Lirios', '(11) 9234-5678', 'liriosdistribuidora@gmail.com', '1 dia', 1400),
+('Bastos', '(11) 9876-5432', 'bastosdistribuidora@gmail.com', '2 dias', 1500);
+
+-- Insert Pontos 
+
+INSERT INTO Farmacia_Ponto_Venda (cnpj_farmacia, sede, endereco, horario_funcionamento)
+VALUES 
+('82345678340190', 'Farmácia Central', 'Rua Machado de Assis, 150 - São Paulo', '08:00 às 18:00'),
+('987654324522140', 'Farmácia SP', 'Rua Zumbi dos Palmares, 500 - São Paulo', '09:00 às 20:00');
+
+
+-- Medicamentos Testados 
+
+INSERT INTO Medicamento_Testado (composicao_medicamento, nome_produto, numero_lote, data_validade, data_fabricacao)
+VALUES 
+('Paracetamol, Ácido Acetilsalicílico', 'Alivia já', '19945', '2025-12-31', '2020-01-10'),
+('Ibuprofeno', 'Bemzilax', '67890', '2024-06-30', '2018-02-15');
+
+-- Insert M.Primas
+
+INSERT INTO Materia_Prima (biomateriais, micro_organismos, substancias_minerais, extrato_plantas)
+VALUES
+('Colágeno', 'Lactobacillus acidophilus', 'Óxido de magnésio', 'Ginseng'),
+('Fibra de carbono', 'Escherichia coli (E. coli)', 'Sulfato de Ferro', 'Camomila'),
+('Quitosana', 'Streptomyces', 'Carbonato de Cálcio', 'Hortelã-pimenta');
+
+
+-- Insert Forncedores
+
+INSERT INTO Fornecedora_Animais (id_industria, nome_fornecedor, endereco_fornecedor, proprietario_fornecedor)
+VALUES 
+(1, 'Fornecedora de Camundongos Ltda', 'Rua Anita Garibaldi, 202 - São Paulo', 'Liza Kruger'),
+(2, 'Fornecedor de Coelhos Ltda.', 'Rua Maria Quitéria, 340 - São Paulo de Janeiro', 'Ana Júlia Lima');
+
+
+-- Insert Animais
+
+INSERT INTO Animais (id_fornecedora, tipo_animal, quantidade_populacao)
+VALUES 
+(1, 'Camundongo', 50),
+(1, 'Rato', 3000),
+(2, 'Coelho', 2000),
+(2, 'Hamster', 1500);
+
+-- Insert Funcionários
+INSERT INTO Funcionarios (nome_funcionario, cpf_funcionario, endereco_funcionario, contato_telefone, contato_email, setor, cargo, turno, salario)
+VALUES 
+('Júlia Bastos', '51616468882', 'Rua João Goulart, 74', '11 94263-7964', 'juliabastos@gmail.com', 'Produção', 'Operadora', 'Diurno', 3000.00),
+('Ana Beatriz', '67765436150', 'Rua Getúlio Dornelles, 60', '11 985678-7587', 'anabia@gmail.com', 'Pesquisa', 'Pesquisadora', 'Noturno', 5000.00),
+('Livia Severi', '99678912340', 'Rua Francesco Severi, 80', '11 98937-6671', 'liviaseveri@gmail.com', 'Administração', 'Recepcionista', 'Tarde', 2000.00),
+('Ana Clara', '72812345603', 'Rua Juscelino Kubitschek, 94', '11 95366-5345', 'anaclara@gmail.com', 'Pesquisa', 'Pesquisadora', 'Diurno', 7000.00);
+
+
+-- Insert Zelador
+INSERT INTO Zelador (id_funcionario, area_responsabilidade)
+VALUES 
+(1, 'Manutenção, organização e limpeza de instalações');
+
+-- Insert Segurança
+INSERT INTO Seguranca (id_funcionario, licenca_seguranca)
+VALUES 
+(2, 'Licença de segurança profissional');
+
+
+-- Insert Recepcionista
+INSERT INTO Recepcionista (id_funcionario)
+VALUES 
+(3);
+
+-- Insert Cientista/Pesquisador
+INSERT INTO Cientista_Pesquisador (id_funcionario, area_especializacao, diploma, tempo_atuacao)
+VALUES 
+(4, 'Biotecnologia', 'Doutorado em Biotecnologia', 15);
