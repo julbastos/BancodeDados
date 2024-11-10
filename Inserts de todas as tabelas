@@ -47,11 +47,12 @@ VALUES
 
 -- Insert M.Primas
 
-INSERT INTO Materia_Prima (biomateriais, micro_organismos, substancias_minerais, extrato_plantas)
+INSERT INTO Materia_Prima (id_industria, biomateriais, micro_organismos, substancias_minerais, extrato_plantas)
 VALUES
-('Colágeno', 'Lactobacillus acidophilus', 'Óxido de magnésio', 'Ginseng'),
-('Fibra de carbono', 'Escherichia coli (E. coli)', 'Sulfato de Ferro', 'Camomila'),
-('Quitosana', 'Streptomyces', 'Carbonato de Cálcio', 'Hortelã-pimenta');
+(1, 'Colágeno', 'Lactobacillus acidophilus', 'Óxido de magnésio', 'Ginseng'),
+(1, 'Fibra de carbono', 'Escherichia coli (E. coli)', 'Sulfato de Ferro', 'Camomila'),
+(2, 'Quitosana', 'Streptomyces', 'Carbonato de Cálcio', 'Hortelã-pimenta');
+
 
 
 -- Insert Forncedores
