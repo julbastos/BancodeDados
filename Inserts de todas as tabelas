@@ -26,15 +26,16 @@ VALUES
 
 INSERT INTO Distribuidora (nome_empresa, contato_telefone, contato_email, tempo_medio_entrega, capacidade_armazenamento)
 VALUES 
-('Lirios', '(11) 9234-5678', 'liriosdistribuidora@gmail.com', '1 dia', 1400),
-('Bastos', '(11) 9876-5432', 'bastosdistribuidora@gmail.com', '2 dias', 1500);
+('Lirios', '(11) 9234-5678', 'liriosdistribuidora@gmail.com', '1 day', 1400),
+('Bastos', '(11) 9876-5432', 'bastosdistribuidora@gmail.com', '2 days', 1500);
 
 -- Insert Pontos 
 
 INSERT INTO Farmacia_Ponto_Venda (cnpj_farmacia, sede, endereco, horario_funcionamento)
 VALUES 
 ('82345678340190', 'Farmácia Central', 'Rua Machado de Assis, 150 - São Paulo', '08:00 às 18:00'),
-('987654324522140', 'Farmácia SP', 'Rua Zumbi dos Palmares, 500 - São Paulo', '09:00 às 20:00');
+('98765432452214', 'Farmácia SP', 'Rua Zumbi dos Palmares, 500 - São Paulo', '09:00 às 20:00');
+
 
 
 -- Medicamentos Testados 
@@ -57,7 +58,7 @@ VALUES
 
 INSERT INTO Fornecedora_Animais (id_industria, nome_fornecedor, endereco_fornecedor, proprietario_fornecedor)
 VALUES 
-(1, 'Fornecedor de Camundongos Ltda', 'Rua Anita Garibaldi, 202 - São Paulo', 'Liza Kruger'),
+(1, 'Fornecedora de Camundongos Ltda', 'Rua Anita Garibaldi, 202 - São Paulo', 'Liza Kruger'),
 (2, 'Fornecedor de Coelhos Ltda.', 'Rua Maria Quitéria, 340 - São Paulo de Janeiro', 'Ana Júlia Lima');
 
 
