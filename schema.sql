@@ -1,9 +1,7 @@
 -- Entidade: Indústria Farmacêutica 
 CREATE TABLE Industria_Farmaceutica (
-    cnpj_industria CHAR(14) PRIMARY KEY,
+    id_industria SERIAL PRIMARY KEY,
     nome_empresa VARCHAR(100) NOT NULL,
-    endereco VARCHAR(200),
-    sede VARCHAR(150), 
     ano_fundacao INT,
     faturamento_anual NUMERIC(15, 2)
 );
@@ -11,15 +9,17 @@ CREATE TABLE Industria_Farmaceutica (
 -- Tabela auxiliar para 'Licenças e Certificados' (normalização)
 CREATE TABLE Licencas_Certificados (
     id_licenca SERIAL PRIMARY KEY,
-    cnpj_industria CHAR(14) REFERENCES Industria_Farmaceutica(cnpj_industria) ON DELETE CASCADE,
+    id_industria CHAR(14) REFERENCES Industria_Farmaceutica(id_industria) ON DELETE CASCADE,
     descricao VARCHAR(300) NOT NULL
 );
 
--- Tabela auxiliar para 'Filiais' (composto)
-CREATE TABLE Filial (
-    id_filial SERIAL PRIMARY KEY,
-    cnpj_filial CHAR(14) REFERENCES Industria_Farmaceutica(cnpj_industria) ON DELETE CASCADE,
-    endereco_filial VARCHAR(200) NOT NULL
+-- Tabela auxiliar para 'Unidade' (normalização)
+CREATE TABLE Unidade (
+    id_unidade SERIAL PRIMARY KEY,
+    id_industria INT REFERENCES Industria_Farmaceutica(id_industria) ON DELETE CASCADE,
+    cnpj_unidade CHAR(18) UNIQUE,
+    endereco VARCHAR(200) NOT NULL,
+    tipo_local VARCHAR(6)  -- 'Sede' ou 'Filial'
 );
 
 -- Entidade: Distribuidora
@@ -32,27 +32,13 @@ CREATE TABLE Distribuidora (
     capacidade_armazenamento INT
 );
 
--- Tabela auxiliar para 'Licenças' da Distribuidora (multivalorado)
-CREATE TABLE Licencas_Distribuidora (
-    id_registro SERIAL PRIMARY KEY,
-    id_distribuidora INT REFERENCES Distribuidora(id_distribuidora) ON DELETE CASCADE,
-    tipo_certificado VARCHAR(100) NOT NULL,
-    data_validade DATE
-);
-
 -- Entidade: Farmacia/Ponto de Venda
 CREATE TABLE Farmacia_Ponto_Venda (
-    cnpj_farmacia CHAR(14) PRIMARY KEY, 
+    id_farmacia SERIAL PRIMARY KEY,
+    cnpj_farmacia CHAR(14) UNIQUE, 
     sede VARCHAR(150),          
     endereco VARCHAR(200),      
     horario_funcionamento VARCHAR(100) 
-);
-
--- Tabela auxiliar para 'Licenças' da Farmácia/Ponto de Venda
-CREATE TABLE Licencas_Farmacia (
-    id_licenca SERIAL PRIMARY KEY,
-    cnpj_farmacia CHAR(14) REFERENCES Farmacia_Ponto_Venda(cnpj_farmacia) ON DELETE CASCADE,  -- Relacionamento com a farmácia
-    descricao VARCHAR(300) NOT NULL
 );
 
 -- Entidade: Medicamento Testado
@@ -65,17 +51,17 @@ CREATE TABLE Medicamento_Testado (
     data_fabricacao DATE
 );
 
--- Entidade: Consumidor
-CREATE TABLE Consumidor (
+-- Entidade: Cliente
+CREATE TABLE Cliente (
     id_cliente SERIAL PRIMARY KEY, 
     cpf_cliente CHAR(11) NOT NULL UNIQUE,
     nome_cliente VARCHAR(100),
-    endereco VARCHAR(200)
+    endereco_cliente VARCHAR(200)
 );
 
 -- Entidade: Matéria Prima
 CREATE TABLE Materia_Prima (
-    id_materia_prima SERIAL PRIMARY KEY,
+    id_industria INT PRIMARY KEY REFERENCES Industria_Farmaceutica(id_industria) ON DELETE CASCADE,
     biomateriais VARCHAR(200),
     micro_organismos VARCHAR(200),
     substancias_minerais VARCHAR(200),
@@ -84,10 +70,11 @@ CREATE TABLE Materia_Prima (
 
 -- Entidade: Fornecedora de Animais
 CREATE TABLE Fornecedora_Animais (
-    id_fornecedora SERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    endereco VARCHAR(200),
-    proprietario VARCHAR(100) NOT NULL
+    id_industria INT PRIMARY KEY REFERENCES Industria_Farmaceutica(id_industria) ON DELETE CASCADE,
+    id_fornecedor SERIAL PRIMARY KEY,
+    nome_fornecedor VARCHAR(100) NOT NULL,
+    endereco_fornecedor VARCHAR(200),
+    proprietario_fornecedor VARCHAR(100) NOT NULL
 );
 
 -- Tabela auxiliar para 'Animal' da Fornecedora (multivalorado)
@@ -108,7 +95,8 @@ CREATE TABLE Funcionarios (
     contato_email VARCHAR (100),
     setor VARCHAR(100),
     cargo VARCHAR(100),
-    turno VARCHAR(30)
+    turno VARCHAR(30),
+    salario NUMERIC(10,2)
 );
 
 -- Entidade: Zelador (especialização)
